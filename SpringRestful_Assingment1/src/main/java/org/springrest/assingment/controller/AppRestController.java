@@ -3,7 +3,6 @@ package org.springrest.assingment.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -66,6 +65,7 @@ public class AppRestController {
 	@DeleteMapping(value = "/book/{id}")
 	public ResponseEntity deleteBookByID(@PathVariable long id)
 	{
+    	System.out.println("inside delete "+id);
     	try {
 		Book bookList = bookRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Book id '" + id + "' does not exist"));
 		bookRepo.deleteById(id);
@@ -82,6 +82,7 @@ public class AppRestController {
 	public List<Book> getAllBooks()
 	{
 		List<Book> bookList = (ArrayList)bookRepo.findAll();
+		System.out.println(bookList.toString());
 		return bookList;
 	}
 	

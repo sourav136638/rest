@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
@@ -35,7 +36,7 @@ public class Book implements Serializable {
 	private Date publishDate;
 	private String title;
 	private int volume;
-	private Subject subject;
+	//private Subject subject;
 	//private int subjectId;
 
 	public Book() {
@@ -64,7 +65,7 @@ public class Book implements Serializable {
 	}
 
 
-	//@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	@Column(name="publish_date")
 	public Date getPublishDate() {
 		return this.publishDate;
@@ -104,13 +105,14 @@ public class Book implements Serializable {
 	
 	  //bi-directional many-to-one association to Subject
 	  
-	  @ManyToOne
-	  
-	 @JoinColumn(name="subject_id") public Subject getSubject() { return
-	  this.subject; }
-	  
-	  public void setSubject(Subject subject) { this.subject = subject; }
-	 
-
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name="subject_id") public Subject getSubject() { return
+	 * this.subject; }
+	 * 
+	 * public void setSubject(Subject subject) { this.subject = subject; }
+	 * 
+	 */
 	
 }
