@@ -39,7 +39,7 @@ public class AppRestController {
    	{
     	try {
 			bookRepo.save(book);
-			return new ResponseEntity("Success", HttpStatus.OK);
+			return new ResponseEntity(HttpStatus.OK);
 			
 		}catch(Exception ex) {
 			return new ResponseEntity("Bad Request", HttpStatus.BAD_REQUEST);
@@ -53,7 +53,7 @@ public class AppRestController {
     	try {
 			Book bookList = bookRepo.findById(book.getBookId()).orElseThrow(() -> new NoSuchElementException("Book id '" + book.getBookId() + "' does not exist"));
 			bookRepo.save(book);
-			return new ResponseEntity("Success", HttpStatus.OK);
+			return new ResponseEntity(HttpStatus.OK);
 			
 		}catch(Exception ex) {
 			return new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST);
@@ -69,7 +69,7 @@ public class AppRestController {
     	try {
 		Book bookList = bookRepo.findById(id).orElseThrow(() -> new NoSuchElementException("Book id '" + id + "' does not exist"));
 		bookRepo.deleteById(id);
-		return new ResponseEntity("Success", HttpStatus.OK);
+		return new ResponseEntity(HttpStatus.OK);
 		
 	}catch(Exception ex) {
 		return new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST);
